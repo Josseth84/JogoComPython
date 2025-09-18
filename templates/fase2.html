@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Fase 2</title>
+</head>
+<body>
+  <h1>Fase 2: Comunicação em ambiente de pressão</h1>
+  <p>Você está em uma reunião tensa com prazos apertados. Como você reage?</p>
+
+  <button onclick="enviarResposta('A')">Fico em silêncio para evitar conflito</button>
+  <button onclick="enviarResposta('B')">Expresso minha opinião com calma</button>
+  <button onclick="enviarResposta('C')">Reajo impulsivamente</button>
+
+  <script>
+    function enviarResposta(choice) {
+      fetch('/resposta', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          player_id: 'abc123',
+          scenario_id: 2,
+          choice: choice,
+          response_time: 4.1 // simulado
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert('Resposta registrada! Pontuação: ' + data.score);
+        window.location.href = '/fim'; // próxima fase ou tela final
+      });
+    }
+  </script>
+</body>
+</html>

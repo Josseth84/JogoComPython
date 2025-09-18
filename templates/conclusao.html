@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conclusão da Jornada</title>
+</head>
+<body>
+    <h2>🔚 Conclusão da Jornada</h2>
+
+    <p>Você percorreu situações reais envolvendo inclusão de pessoas com TEA no ambiente de trabalho.</p>
+    <p>Com base nas suas escolhas, seu perfil foi identificado como:</p>
+    <h3 style="color: darkblue;">{{ perfil }}</h3>
+
+    <hr>
+
+    <h3>📋 Suas escolhas:</h3>
+    <ul>
+        {% for r in respostas %}
+            <li>
+                Fase {{ r.scenario_id }} — Escolha: <strong>{{ r.choice }}</strong>
+                {% if r.justificativa %}
+                    <br>Justificativa: {{ r.justificativa }}
+                {% endif %}
+                {% if r.sugestao %}
+                    <br>Sugestão: {{ r.sugestao }}
+                {% endif %}
+                {% if r.criterio %}
+                    <br>Critério: {{ r.criterio }}
+                {% endif %}
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <h3>🧠 Reflexão:</h3>
+    <p>Reflita sobre os momentos em que você poderia ter agido com mais empatia ou compreensão.</p>
+    <p>Este jogo não busca julgar, mas revelar padrões e promover consciência sobre atitudes inclusivas.</p>
+
+    <p><em>Obrigado por participar. Sua jornada é parte de uma pesquisa que busca construir ambientes mais justos e acolhedores.</em></p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Fase 1</title>
+</head>
+<body>
+  <h1>Fase 1: Comunicação com colega neurodiverso</h1>
+  <p>Seu colega evita contato visual durante a reunião. O que você faz?</p>
+
+  <button onclick="enviarResposta('A')">Ignorar e seguir com a pauta</button>
+  <button onclick="enviarResposta('B')">Perguntar se está tudo bem</button>
+  <button onclick="enviarResposta('C')">Oferecer pausa e espaço</button>
+
+  <script>
+    function enviarResposta(choice) {
+      fetch('/resposta', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          player_id: 'abc123',
+          scenario_id: 1,
+          choice: choice,
+          response_time: 3.2 // simulado
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert('Resposta registrada! Pontuação: ' + data.score);
+        window.location.href = '/fase2';
+      });
+    }
+  </script>
+</body>
+</html>
